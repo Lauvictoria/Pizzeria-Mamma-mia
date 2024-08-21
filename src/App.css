@@ -1,0 +1,121 @@
+body {
+  margin: 0;
+  padding: 5px;
+  width: 100%;
+}
+
+/* Navbar */
+
+.navbar {
+  background-color: rgba(24, 24, 26, 0.842) !important;
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link,
+.navbar .btn {
+  color: #ffffff !important; 
+}
+
+.navbar .nav-link:hover {
+  color: #f0f0f0 !important; 
+}
+
+/* Header */
+
+.header-container {
+  position: relative;
+  width: 100%;
+  height: auto; /* Ajusta la altura según sea necesario */
+}
+
+.img-header {
+  width: 2000px;
+  height: 400px; /* Mantiene la relación de aspecto */
+  object-fit: cover; /* Ajusta la imagen para cubrir el contenedor sin distorsionar */
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 1; 
+}
+
+.header-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white; 
+  text-align: center;
+  padding: 20px; 
+  z-index: 2;
+}
+
+.header-title {
+  font-size: 2rem; 
+  margin-bottom: 10px; 
+}
+
+.header-paragraph {
+  font-size: 1rem; 
+}
+
+/* home y cardpizza */
+
+.card-container {
+  display: flex;
+  justify-content: space-around; 
+  flex-wrap: wrap; 
+  margin: 20px; 
+  gap: 20px; 
+}
+
+.card-container .card {
+  flex: 1 1 18rem; 
+  max-width: 18rem; 
+}
+.ingr-text{
+  display: flex;
+  justify-items: center;
+  
+}
+.price-text{
+  display: flex;
+  
+}
+.button-container {
+  display: flex;
+  justify-content: space-between; 
+  gap: 10px; 
+  margin-top: 10px; 
+}
+.button-card1 {
+  background-color: #ffffff; 
+  border-color: #000000; 
+  color: rgb(0, 0, 0); 
+  flex: 1;
+}
+
+.button-card2 {
+  background-color: #000000; 
+  border-color: #000000; 
+  color: white; 
+  flex: 1;
+}
+
+
+
+
+/* Footer */
+
+.footer {
+  width: 100%; /* Hace que el footer ocupe todo el ancho de la pantalla */
+  text-align: center; /* Centra el texto */
+  padding: 10px 0; /* Espacio interior superior e inferior */
+  background-color: #282828; /* Cambia el color de fondo */
+  color: #ffffff; /* Cambia el color del texto */
+  bottom: 0; /* Posiciona el footer al final de la página */
+}
