@@ -2,12 +2,26 @@ body {
   margin: 0;
   padding: 5px;
   width: 100%;
+  min-height: 100vh; /* Asegura que el body ocupe el 100% de la altura de la ventana */
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1; /* Permite que el contenido principal ocupe el espacio restante */
+  padding-top: 56px; /* Añade espacio en la parte superior para la navbar */
+  padding-bottom: 50px; /* Añade espacio en la parte inferior para el footer */
 }
 
 /* Navbar */
 
 .navbar {
   background-color: rgba(24, 24, 26, 0.842) !important;
+  width: 100%; /* Hace que el navbar ocupe todo el ancho */
+  position: fixed; /* Fija el navbar en la parte superior */
+  top: 0; /* Alinea el navbar en la parte superior */
+  left: 0; /* Alinea el navbar a la izquierda */
+  z-index: 1000; /* Asegura que el navbar esté sobre otros elementos */
 }
 
 .navbar .navbar-brand,
@@ -25,12 +39,12 @@ body {
 .header-container {
   position: relative;
   width: 100%;
-  height: auto; /* Ajusta la altura según sea necesario */
+  height: auto; /* Ajusta la altura*/
 }
 
 .img-header {
   width: 2000px;
-  height: 400px; /* Mantiene la relación de aspecto */
+  height: 400px; 
   object-fit: cover; /* Ajusta la imagen para cubrir el contenedor sin distorsionar */
 }
 .overlay {
@@ -107,15 +121,51 @@ body {
 }
 
 
-
-
 /* Footer */
 
 .footer {
   width: 100%; /* Hace que el footer ocupe todo el ancho de la pantalla */
   text-align: center; /* Centra el texto */
   padding: 10px 0; /* Espacio interior superior e inferior */
-  background-color: #282828; /* Cambia el color de fondo */
-  color: #ffffff; /* Cambia el color del texto */
+  background-color: #282828; 
+  color: #ffffff; 
   bottom: 0; /* Posiciona el footer al final de la página */
+  position: fixed; /* Fija el footer en la parte inferior */
+  bottom: 0; /* Alinea el footer en la parte inferior */
+  left: 0;
+}
+
+.error {
+  padding: 10px;
+  color: white;
+  background-color: red;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 10px;
+}
+.success{
+  padding: 10px;
+  color: white;
+  background-color: green;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 10px; 
+}
+
+/* Login y Register */
+.login-container, .register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 106px); /* Ajusta la altura del contenedor según el tamaño del navbar y footer */
+  margin-top: 56px; /* Asegura que el contenedor no quede detrás de la navbar */
+}
+
+.formulario {
+  width: 100%;
+  max-width: 400px; /* Ajusta el ancho máximo del formulario */
+  padding: 20px;
+  background-color: #fff; 
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
 }

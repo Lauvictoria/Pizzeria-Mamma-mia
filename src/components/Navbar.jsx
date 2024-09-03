@@ -11,7 +11,7 @@ const CustomNavbar = () => {
 
     return (
         <Navbar expand="lg" className="navbar bg-body-tertiary w-100">
-            <Container fluid>
+              <Container fluid> {/* Usa Container fluid para asegurar el 100% del ancho */}
                 <Navbar.Brand href="#">Pizzeria Mamma Mia!</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
@@ -28,7 +28,7 @@ const CustomNavbar = () => {
                         <Button variant="outline-success">Total: ${total.toLocaleString()}</Button>
                     </Form>
                 </Navbar.Collapse>
-            </Container>
+                </Container>
         </Navbar>
     )
 }
