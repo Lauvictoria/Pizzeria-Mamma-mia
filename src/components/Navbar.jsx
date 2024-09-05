@@ -6,12 +6,12 @@ import Navbar from 'react-bootstrap/Navbar';
 
 
 const CustomNavbar = () => {
-    const total = 25000;
+    const total = 0;
     const token = false;
 
     return (
         <Navbar expand="lg" className="navbar bg-body-tertiary w-100">
-              <Container fluid> {/* Usa Container fluid para asegurar el 100% del ancho */}
+              <Container fluid> 
                 <Navbar.Brand href="#">Pizzeria Mamma Mia!</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">

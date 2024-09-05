@@ -8,6 +8,7 @@ import Home from './components/Home'
 import CustomNavbar from './components/Navbar'
 import Register from './components/Register'
 import Login from './components/Login'
+import Cart from './components/Cart'
 
 
 
@@ -16,14 +17,14 @@ function App() {
 
   return (
     <>
-     <CustomNavbar/>
-     <div className="main-content">
-        {/* <Home /> */}
-        {/* <Register /> */}
-        <Login />
-      </div>
-     <Footer/>
-     
+    <div className="main-content">
+      <CustomNavbar/>
+      <Home />
+      {/* <Register /> */}
+      {/* <Login /> */}
+      {/* <Cart/> */}
+      <Footer/>
+    </div>
     </>
   )
 }

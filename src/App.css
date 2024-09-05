@@ -80,17 +80,18 @@ body {
 /* home y cardpizza */
 
 .card-container {
-  display: flex;
-  justify-content: space-around; 
-  flex-wrap: wrap; 
-  margin: 20px; 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px; 
+  justify-items: center; 
+  padding: 20px;
 }
 
 .card-container .card {
-  flex: 1 1 18rem; 
-  max-width: 18rem; 
+  max-width: 350px; 
+  width: 100%;
 }
+
 .ingr-text{
   display: flex;
   justify-items: center;
