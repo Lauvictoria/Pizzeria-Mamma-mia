@@ -29,11 +29,13 @@ const Pizza = () => {
         <Card.Title>{pizza.name}</Card.Title>
         <Card.Text>
           <strong>Ingredientes:</strong>
-          <ul>
-            {pizza.ingredients.map((ingredient, index) => (
-              <li key={index}>{ingredient}</li>
-            ))}
-          </ul>
+          <div>
+            <ul>
+              {pizza.ingredients.map((ingredient, index) => (
+                <li key={index}>{ingredient}</li>
+              ))}
+            </ul>
+          </div>
           <strong>Precio:</strong> ${pizza.price} <br />
           <strong>Descripción:</strong> {pizza.desc}
         </Card.Text>
