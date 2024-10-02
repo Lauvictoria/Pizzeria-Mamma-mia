@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
-import { Routes, Route } from 'react-router-dom'; // Ya no necesitas importar BrowserRouter aquí
+import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
@@ -13,9 +13,11 @@ import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
 import CustomNavbar from './components/Navbar';
 import Footer from './components/Footer';
+import { CartProvider } from './context/CartContext.jsx'
 
 function App() {
   return (
+    <CartProvider>
     <div className="main-content">
       <CustomNavbar />
       <Routes>
@@ -29,6 +31,7 @@ function App() {
       </Routes>
       <Footer />
     </div>
+    </CartProvider>
   );
 }
 

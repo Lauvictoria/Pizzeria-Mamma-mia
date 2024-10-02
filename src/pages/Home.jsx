@@ -1,11 +1,12 @@
 import CardPizza from "../components/CardPizza"
 import Header from "../components/Header"
 import React, { useState, useEffect } from 'react';
+import { useCart } from '../context/CartContext.jsx';
 
 const Home = () => {
 
   const [pizzas, setPizzas] = useState([]);
-
+  const { addToCart } = useCart();
   
   useEffect(() => {
     const fetchPizzas = async () => {
@@ -33,7 +34,7 @@ const Home = () => {
             price={pizza.price}
             ingredients={pizza.ingredients}
             img={pizza.img}
-            
+            onAddToCart={() => addToCart(pizza)}
           />
         ))}
         </div>

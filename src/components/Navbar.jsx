@@ -6,9 +6,10 @@ import Navbar from 'react-bootstrap/Navbar';
 import { LinkContainer } from 'react-router-bootstrap';  
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useCart } from '../context/CartContext.jsx';
 
 const CustomNavbar = () => {
-    const [total, setTotal] = useState(0); 
+  const { total } = useCart(); 
     const token = true;  
 
     return (
@@ -21,7 +22,7 @@ const CustomNavbar = () => {
                         <LinkContainer to="/">
                             <Nav.Link>Home</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/login">
+                        <LinkContainer to="/login"> 
                             <Nav.Link>Login</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/register">

@@ -2,26 +2,19 @@ import React, { useState } from 'react';
 import { pizzaCart } from '../pizzas'; 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { useCart } from '../context/CartContext';
 
 const Cart = () => {
-  const [cart, setCart] = useState(pizzaCart);
+
+  const { cart, addToCart, removeFromCart, total } = useCart();
 
   const increaseQuantity = (id) => {
-    setCart(cart.map(pizza => 
-      pizza.id === id ? { ...pizza, quantity: pizza.quantity + 1 } : pizza
-    ));
+    addToCart(cart.find(pizza => pizza.id === id));
   };
 
   const decreaseQuantity = (id) => {
-    setCart(cart
-      .map(pizza => 
-        pizza.id === id ? { ...pizza, quantity: pizza.quantity - 1 } : pizza
-      )
-      .filter(pizza => pizza.quantity > 0)
-    );
+    removeFromCart(id);
   };
-
-  const total = cart.reduce((sum, pizza) => sum + pizza.price * pizza.quantity, 0);
 
   return (
     <>
