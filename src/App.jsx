@@ -14,24 +14,35 @@ import NotFound from './pages/NotFound';
 import CustomNavbar from './components/Navbar';
 import Footer from './components/Footer';
 import { CartProvider } from './context/CartContext.jsx'
+import ProtectedRoute from './components/ProtectedRoute';
+import { UserProvider } from './context/UserContext.jsx'
 
 function App() {
   return (
+   <UserProvider>
     <CartProvider>
-    <div className="main-content">
-      <CustomNavbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/pizza/p001" element={<Pizza />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="*" element={<NotFound />} />  
-      </Routes>
-      <Footer />
-    </div>
+      <div className="main-content">
+        <CustomNavbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/pizza/p001" element={<Pizza />} />
+          <Route
+        path="/profile"
+        element={
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        }
+      />
+          <Route path="*" element={<NotFound />} />  
+        </Routes>
+        <Footer />
+      </div>
     </CartProvider>
+    </UserProvider> 
   );
 }
 

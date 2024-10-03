@@ -3,9 +3,10 @@ import { pizzaCart } from '../pizzas';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useCart } from '../context/CartContext';
+import { useUser } from '../context/UserContext.jsx';
 
 const Cart = () => {
-
+  const { token } = useUser();
   const { cart, addToCart, removeFromCart, total } = useCart();
 
   const increaseQuantity = (id) => {
@@ -38,7 +39,7 @@ const Cart = () => {
         ))}
       </div>
       <h3>Total: ${total}</h3>
-      <Button variant="success">Pagar</Button>
+      <Button variant="success" disabled={!token}>Pagar</Button>
     </>
   );
 };
