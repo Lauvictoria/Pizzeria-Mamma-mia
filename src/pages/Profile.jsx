@@ -1,12 +1,16 @@
+import React from 'react';
+import { useUser } from '../context/UserContext';
+
 const Profile = () => {
-    return (
-      <div>
-        <h1>Perfil de Usuario</h1>
-        <p>Email: usuario@example.com</p>
-        <button>Cerrar sesión</button>
-      </div>
-    );
-  }
-  
+  const { email, logout } = useUser();
+
+  return (
+    <div>
+      <h2>Profile</h2>
+      <p>Email: {email}</p>
+      <button onClick={logout}>Logout</button>
+    </div>
+  );
+};
+
 export default Profile;
-  

@@ -1,78 +1,45 @@
-import { useState } from "react"
+import React, { useState } from 'react';
+import { useUser } from '../context/UserContext';
 
 const Register = () => {
+    const { register } = useUser(); 
     const [email, setEmail] = useState('');
-    const [contraseña, setContraseña] = useState('');
-    const [confirmar, setConfirmar] = useState('');
-    const [error, setError] = useState(false);
-    const [success, setSuccess] = useState(false);
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
 
-    const validarDatos = (e) => {
-        e.preventDefault()
-        
-        if (!email.trim() || !contraseña.trim() || !confirmar.trim()) {
-            setError('Todos los campos son obligatorios');
-            setSuccess(false);
-            return;
-          }
-      
-        
-        if (contraseña.length < 6) {
-            setError('La contraseña debe tener al menos 6 caracteres');
-            setSuccess(false);
-            return;
-          }
-      
-        if (contraseña !== confirmar) {
-            setError('La contraseña y la confirmación deben ser iguales');
-            setSuccess(false);
-            return;
-          }
-      
-        setError('');
-        setSuccess(true);
-        };
-
-    return (
-        <>
-         <div className="register-container">
-            <form className="formulario" onSubmit={validarDatos}>
-                {error && <p className="error">{error}</p>}
-                {success && <p className="success">Usuario registrado correctamente</p>} 
-                <div  className="form-group">
-                    <label>Email</label>
-                    <input
-                    type="text"
-                    name="email"
-                    className="form-control"
-                    onChange={(e) => setEmail(e.target.value)} value={email}
-                    />
-                </div>
-                <div  className="form-group">
-                    <label>Contraseña</label>
-                    <input
-                    type="text"
-                    name="contrasena"
-                    className="form-control"
-                    onChange={(e) => setContraseña(e.target.value)} value={contraseña}
-                    />
-                </div>
-                <div  className="form-group">
-                    <label>Confirmar Contraseña</label>
-                    <input
-                    type="text"
-                    name="confirmar"
-                    className="form-control"
-                    onChange={(e) => setConfirmar(e.target.value)} value={confirmar}
-                    />
-                </div>
-
-                <button  className="btn btn-dark mt-3" type="submit" >Enviar</button>
-                
-            </form>
-            </div>
-        </>
-    )
-}
-
-export default Register
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        if (!email || !password) {
+          setError('Todos los campos son obligatorios');
+          return;
+        }
+    
+        if (password.length < 6) {
+          setError('La contraseña debe tener al menos 6 caracteres');
+          return;
+        }
+    
+        const registroExitoso = await register(email, password);
+        if (registroExitoso) {
+          setSuccess('Usuario registrado con éxito');
+          setError('');
+        } else {
+          setError('Error al registrar el usuario');
+          setSuccess('');
+        }
+      };
+    
+      return (
+        <form onSubmit={handleSubmit}>
+          {error && <p className="error">{error}</p>}
+          {success && <p className="success">{success}</p>}
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+          <button type="submit">Register</button>
+        </form>
+      );
+    };
+    
+    export default Register;

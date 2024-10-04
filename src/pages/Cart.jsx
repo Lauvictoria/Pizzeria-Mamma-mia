@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { pizzaCart } from '../pizzas'; 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useCart } from '../context/CartContext';
@@ -8,6 +7,7 @@ import { useUser } from '../context/UserContext.jsx';
 const Cart = () => {
   const { token } = useUser();
   const { cart, addToCart, removeFromCart, total } = useCart();
+  const [mensajeExito, setMensajeExito] = useState('');
 
   const increaseQuantity = (id) => {
     addToCart(cart.find(pizza => pizza.id === id));
@@ -16,6 +16,28 @@ const Cart = () => {
   const decreaseQuantity = (id) => {
     removeFromCart(id);
   };
+
+  const realizarCompra = async () => {
+    if (!token) return;
+
+    try {
+      const response = await fetch('http://localhost:5000/api/checkouts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ cart }),
+      });
+
+      if (response.ok) {
+        setMensajeExito('Compra realizada con éxito');
+      }
+    } catch (error) {
+      console.error('Error al realizar la compra:', error);
+    }
+  };
+
 
   return (
     <>
@@ -39,7 +61,8 @@ const Cart = () => {
         ))}
       </div>
       <h3>Total: ${total}</h3>
-      <Button variant="success" disabled={!token}>Pagar</Button>
+      {mensajeExito && <p className="success">{mensajeExito}</p>}
+      <Button variant="success" onClick={realizarCompra} disabled={!token}>Pagar</Button>
     </>
   );
 };
